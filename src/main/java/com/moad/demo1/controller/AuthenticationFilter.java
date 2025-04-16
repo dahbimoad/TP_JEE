@@ -1,4 +1,4 @@
-package com.moad.demo1.controller;
+package com.moad.demo1.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
