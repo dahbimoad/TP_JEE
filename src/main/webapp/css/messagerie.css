@@ -1,0 +1,413 @@
+/* messagerie.css - Main stylesheet for Messagerie application */
+
+/* Base Styles */
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: #1a3a5f;
+    font-weight: 600;
+}
+
+h2 {
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #2c75bd;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: #1a5097;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2c75bd 0%, #1a3a5f 100%);
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.app-title {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+th {
+    background-color: #2c75bd;
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.message-subject {
+    font-weight: 600;
+    color: #1a3a5f;
+}
+
+.message-content {
+    color: #555;
+}
+
+/* Forms */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1a3a5f;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #2c75bd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(44, 117, 189, 0.15);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #2c75bd;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #1a5097;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Icons */
+.icon {
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Cards */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.card-title {
+    color: #2c75bd;
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Welcome message */
+.welcome-message {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 5px solid #2c75bd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.welcome-message h2 {
+    color: #2c75bd;
+    margin-top: 0;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Messages */
+.error-message {
+    color: #e74c3c;
+    background-color: #fdecea;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #e74c3c;
+    display: flex;
+    align-items: flex-start;
+}
+
+.error-message .icon {
+    margin-right: 10px;
+    color: #e74c3c;
+}
+
+.success-message {
+    color: #27ae60;
+    background-color: #e8f8f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #27ae60;
+    display: flex;
+    align-items: flex-start;
+}
+
+.success-message .icon {
+    margin-right: 10px;
+    color: #27ae60;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    color: #7f8c8d;
+    font-style: italic;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Form-specific styles */
+.form-icon {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-icon i {
+    font-size: 55px;
+    color: #2c75bd;
+    opacity: 0.9;
+}
+
+.form-footer {
+    margin-top: 25px;
+    text-align: center;
+    color: #7f8c8d;
+}
+
+.form-footer a {
+    color: #2c75bd;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Password requirements */
+.password-requirements {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border-left: 3px solid #2c75bd;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.requirement i {
+    margin-right: 8px;
+    color: #2c75bd;
+}
+
+/* Subject list */
+.subject-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subject-item {
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    background-color: white;
+    border-radius: 8px;
+    border-left: 5px solid #2c75bd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.subject-item i {
+    margin-right: 15px;
+    color: #2c75bd;
+    font-size: 20px;
+}
+
+.subject-item:hover {
+    background-color: #f0f5ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Session info */
+.session-info {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #6c757d;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-links a {
+        margin-left: 10px;
+        padding: 6px 10px;
+    }
+
+    .app-title {
+        font-size: 22px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}
