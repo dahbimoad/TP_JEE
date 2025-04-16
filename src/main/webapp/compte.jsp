@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mouad
-  Date: 4/16/2025
-  Time: 3:17 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -70,6 +63,14 @@
     .btn-danger {
       background-color: #dc3545;
     }
+    .session-info {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 40px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -83,7 +84,7 @@
 </header>
 
 <div class="welcome-message">
-  <h2>Bienvenue, ${utilisateur.prenom} ${utilisateur.nom}</h2>
+  <h2>Bienvenue, ${sessionScope.utilisateur.prenom} ${sessionScope.utilisateur.nom}</h2>
   <p>Voici vos messages personnels.</p>
 </div>
 
@@ -112,5 +113,9 @@
   </c:choose>
   </tbody>
 </table>
+
+<div class="session-info">
+  <p>Session ID: <%= session.getId() %> | Créée le: <%= new java.util.Date(session.getCreationTime()) %> | Expire dans: <%= session.getMaxInactiveInterval() / 60 %> minutes</p>
+</div>
 </body>
 </html>

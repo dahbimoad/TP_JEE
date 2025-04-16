@@ -1,6 +1,5 @@
 package com.moad.demo1.controller;
 
-
 import com.moad.demo1.dao.DAOServices;
 import com.moad.demo1.model.Message;
 import com.moad.demo1.model.Personne;
@@ -21,7 +20,15 @@ public class ConnexionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Afficher la page de connexion
+        // Check if user is already logged in
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("utilisateur") != null) {
+            // User is already logged in, redirect to compte.jsp
+            response.sendRedirect(request.getContextPath() + "/compte");
+            return;
+        }
+
+        // User is not logged in, show the login page
         request.getRequestDispatcher("/connexion.jsp").forward(request, response);
     }
 
@@ -41,15 +48,14 @@ public class ConnexionServlet extends HttpServlet {
             // Authentification réussie
 
             // Créer une session
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(true);
             session.setAttribute("utilisateur", utilisateur);
 
-            // Récupérer les messages personnels de l'utilisateur
-            List<Message> messages = DAOServices.getUserMessages(utilisateur.getIdPersonne());
-            request.setAttribute("messages", messages);
+            // Set session timeout to 30 minutes
+            session.setMaxInactiveInterval(30 * 60);
 
-            // Rediriger vers la page du compte
-            request.getRequestDispatcher("/compte.jsp").forward(request, response);
+            // Redirect to compte servlet instead of forwarding directly to JSP
+            response.sendRedirect(request.getContextPath() + "/compte");
         } else {
             // Authentification échouée
             request.setAttribute("erreur", "Nom d'utilisateur, prénom ou mot de passe incorrect.");

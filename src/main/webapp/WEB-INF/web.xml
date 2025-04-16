@@ -30,6 +30,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>CompteServlet</servlet-name>
+        <servlet-class>com.moad.demo1.controller.CompteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompteServlet</servlet-name>
+        <url-pattern>/compte</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>InscriptionServlet</servlet-name>
         <servlet-class>com.moad.demo1.controller.InscriptionServlet</servlet-class>
     </servlet>
@@ -56,9 +65,23 @@
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 
+    <!-- Filter Configuration -->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.moad.demo1.filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/compte</url-pattern>
+    </filter-mapping>
+
     <!-- Configuration de la session -->
     <session-config>
         <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
     <!-- Page d'accueil -->

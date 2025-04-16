@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mouad
-  Date: 4/16/2025
-  Time: 3:16 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -57,9 +50,20 @@
 <header>
   <h1>Messagerie</h1>
   <div class="nav-links">
-    <a href="${pageContext.request.contextPath}/connexion">Connexion</a>
-    <a href="${pageContext.request.contextPath}/inscription">Inscription</a>
-    <a href="${pageContext.request.contextPath}/sujets">Sujets</a>
+    <c:choose>
+      <c:when test="${not empty sessionScope.utilisateur}">
+        <!-- User is logged in -->
+        <a href="${pageContext.request.contextPath}/compte">Mon Compte</a>
+        <a href="${pageContext.request.contextPath}/sujets">Sujets</a>
+        <a href="${pageContext.request.contextPath}/deconnexion">Déconnexion</a>
+      </c:when>
+      <c:otherwise>
+        <!-- User is not logged in -->
+        <a href="${pageContext.request.contextPath}/connexion">Connexion</a>
+        <a href="${pageContext.request.contextPath}/inscription">Inscription</a>
+        <a href="${pageContext.request.contextPath}/sujets">Sujets</a>
+      </c:otherwise>
+    </c:choose>
   </div>
 </header>
 
