@@ -1,4 +1,4 @@
-package com.moad.demo1.filter;
+package com.moad.demo1.controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
@@ -25,17 +25,14 @@ public class AuthenticationFilter implements Filter {
         HttpSession session = httpRequest.getSession(false);
         boolean isLoggedIn = (session != null && session.getAttribute("utilisateur") != null);
 
-        // Check if user is not logged in and trying to access protected resource
         if (!isLoggedIn) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/connexion");
         } else {
-            // User is logged in, proceed with the request
             chain.doFilter(request, response);
         }
     }
 
     @Override
     public void destroy() {
-        // Cleanup code if needed
     }
 }

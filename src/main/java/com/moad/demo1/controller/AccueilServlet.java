@@ -18,13 +18,10 @@ public class AccueilServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Récupérer les messages publics
         List<Message> messages = DAOServices.getPublicMessages();
 
-        // Stocker la liste dans l'attribut de la requête
         request.setAttribute("messages", messages);
 
-        // Rediriger vers la page d'accueil
         request.getRequestDispatcher("/accueil.jsp").forward(request, response);
     }
 

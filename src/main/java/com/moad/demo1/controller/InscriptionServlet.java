@@ -17,7 +17,6 @@ public class InscriptionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Afficher la page d'inscription
         request.getRequestDispatcher("/inscription.jsp").forward(request, response);
     }
 
@@ -25,12 +24,10 @@ public class InscriptionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Récupérer les paramètres du formulaire
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String motDePasse = request.getParameter("motDePasse");
 
-        // Vérifier que tous les champs sont remplis
         if (nom == null || prenom == null || motDePasse == null ||
                 nom.trim().isEmpty() || prenom.trim().isEmpty() || motDePasse.trim().isEmpty()) {
 
@@ -39,15 +36,12 @@ public class InscriptionServlet extends HttpServlet {
             return;
         }
 
-        // Inscrire l'utilisateur
         boolean success = DAOServices.registerUser(nom, prenom, motDePasse);
 
         if (success) {
-            // Inscription réussie
             request.setAttribute("message", "Inscription réussie! Vous pouvez maintenant vous connecter.");
             request.getRequestDispatcher("/connexion.jsp").forward(request, response);
         } else {
-            // Inscription échouée
             request.setAttribute("erreur", "Erreur lors de l'inscription. Veuillez réessayer.");
             request.getRequestDispatcher("/inscription.jsp").forward(request, response);
         }

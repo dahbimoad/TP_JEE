@@ -21,7 +21,6 @@ public class DAOUtil {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    // Test method
     public static void main(String[] args) {
         try (Connection conn = getConnection()) {
             System.out.println("Connection established successfully!");

@@ -20,24 +20,18 @@ public class CompteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Check if user is logged in
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("utilisateur") == null) {
-            // User is not logged in, redirect to login page
             response.sendRedirect(request.getContextPath() + "/connexion");
             return;
         }
 
-        // Get the user from session
         Personne utilisateur = (Personne) session.getAttribute("utilisateur");
 
-        // Get user messages
         List<Message> messages = DAOServices.getUserMessages(utilisateur.getIdPersonne());
 
-        // Set attributes for JSP
         request.setAttribute("messages", messages);
 
-        // Forward to the compte.jsp
         request.getRequestDispatcher("/compte.jsp").forward(request, response);
     }
 

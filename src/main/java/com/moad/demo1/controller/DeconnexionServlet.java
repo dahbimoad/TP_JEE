@@ -16,15 +16,12 @@ public class DeconnexionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Récupérer la session actuelle
         HttpSession session = request.getSession(false);
 
         if (session != null) {
-            // Détruire la session
             session.invalidate();
         }
 
-        // Rediriger vers la page d'accueil
         response.sendRedirect(request.getContextPath() + "/accueil");
     }
 

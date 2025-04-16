@@ -11,7 +11,6 @@ import java.util.List;
 
 public class DAOServices {
 
-    // Récupérer tous les messages publics (idPersonne = 1)
     public static List<Message> getPublicMessages() {
         List<Message> messages = new ArrayList<>();
         String sql = "SELECT * FROM Message WHERE idPersonne = 1";
@@ -36,7 +35,6 @@ public class DAOServices {
         return messages;
     }
 
-    // Récupérer uniquement les sujets des messages publics
     public static List<String> getPublicSubjects() {
         List<String> subjects = new ArrayList<>();
         String sql = "SELECT sujet FROM Message WHERE idPersonne = 1";
@@ -55,7 +53,6 @@ public class DAOServices {
         return subjects;
     }
 
-    // Inscrire un nouvel utilisateur
     public static boolean registerUser(String nom, String prenom, String motDePasse) {
         String sql = "INSERT INTO Personne (nom, prenom, motDePasse) VALUES (?, ?, ?)";
         String motDePasseHache = HashUtil.hashPassword(motDePasse);
@@ -75,7 +72,6 @@ public class DAOServices {
         }
     }
 
-    // Récupérer les messages d'un utilisateur spécifique
     public static List<Message> getUserMessages(int idPersonne) {
         List<Message> messages = new ArrayList<>();
         String sql = "SELECT * FROM Message WHERE idPersonne = ?";
@@ -102,7 +98,6 @@ public class DAOServices {
         return messages;
     }
 
-    // Récupérer tous les utilisateurs
     public static List<Personne> getAllPersonnes() {
         List<Personne> personnes = new ArrayList<>();
         String sql = "SELECT * FROM Personne";
@@ -127,7 +122,6 @@ public class DAOServices {
         return personnes;
     }
 
-    // Authentifier un utilisateur
     public static Personne authenticateUser(String nom, String prenom, String motDePasse) {
         String sql = "SELECT * FROM Personne WHERE nom = ? AND prenom = ? AND motDePasse = ?";
         String hashedPassword = HashUtil.hashPassword(motDePasse);

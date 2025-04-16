@@ -18,13 +18,10 @@ public class SujetsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Récupérer les sujets des messages publics
         List<String> sujets = DAOServices.getPublicSubjects();
 
-        // Stocker la liste dans l'attribut de la requête
         request.setAttribute("sujets", sujets);
 
-        // Rediriger vers la page des sujets
         request.getRequestDispatcher("/sujets.jsp").forward(request, response);
     }
 
