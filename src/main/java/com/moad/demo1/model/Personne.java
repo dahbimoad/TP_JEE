@@ -1,10 +1,27 @@
 package com.moad.demo1.model;
 
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "Personne")
 public class Personne {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPersonne;
+    
+    @Column(name = "nom", nullable = false)
     private String nom;
+    
+    @Column(name = "prenom", nullable = false)
     private String prenom;
+    
+    @Column(name = "motDePasse", nullable = false)
     private String motDePasse;
+    
+    @OneToMany(mappedBy = "personne", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Message> messages = new ArrayList<>();
 
     // Constructors
     public Personne() {
@@ -54,6 +71,20 @@ public class Personne {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+    
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+    
+    // Helper method to add a message
+    public void addMessage(Message message) {
+        messages.add(message);
+        message.setPersonne(this);
     }
 
     @Override
